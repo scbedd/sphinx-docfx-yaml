@@ -726,20 +726,24 @@ def build_finished(app, exception):
             if app.verbosity >= 1:
                 app.info(bold('[docfx_yaml] ') + darkgreen('Outputting %s' % filename))
 
-            with open("\\\\?\\"+out_file, 'w') as out_file_obj:
-                out_file_obj.write('### YamlMime:UniversalReference\n')
-                try:
-                    dump(
-                        {
-                            'items': yaml_data,
-                            'references': references,
-                            'api_name': [],  # Hack around docfx YAML
-                        },
-                        out_file_obj,
-                        default_flow_style=False
-                    )
-                except Exception as e:
-                    raise ValueError("Unable to dump object\n{0}".format(yaml_data)) from e
+            try:
+                with open("\\\\?\\"+out_file, 'w') as out_file_obj:
+                    out_file_obj.write('### YamlMime:UniversalReference\n')
+                    try:
+                        dump(
+                            {
+                                'items': yaml_data,
+                                'references': references,
+                                'api_name': [],  # Hack around docfx YAML
+                            },
+                            out_file_obj,
+                            default_flow_style=False
+                        )
+                    except Exception as e:
+                        raise ValueError("Unable to dump object\n{0}".format(yaml_data)) from e
+            except OSError as e:
+                print(e)
+                print("Can't output for {}".format(out_file))
 
             file_name_set.add(filename)
 
