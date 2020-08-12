@@ -593,6 +593,8 @@ def build_finished(app, exception):
                      app.env.docfx_yaml_classes, 
                      app.env.docfx_yaml_functions):  # noqa
 
+        print(sorted(data_set.items()))
+
         for uid, yaml_data in iter(sorted(data_set.items())):
             if not uid:
                 # Skip objects without a module
