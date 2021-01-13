@@ -634,7 +634,7 @@ def build_finished(app, exception):
 
                     if 'parameters' in obj['syntax'] and obj['type'] == 'method':	
                         for args in obj['syntax']['parameters']:
-                            if 'isRequired' not in args:
+                            if 'isRequired' not in args and 'defaultValue' not in args:
                                 args['isRequired'] = True
 
                     # Raise up summary
