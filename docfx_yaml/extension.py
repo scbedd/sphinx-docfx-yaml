@@ -633,8 +633,8 @@ def build_finished(app, exception):
                         obj['syntax']['parameters'] = merged_params
 
                     if 'parameters' in obj['syntax'] and obj['type'] == 'method':	
-                        for args in obj['syntax']['parameters']:	
-                            if 'isRequired' not in args:	
+                        for args in obj['syntax']['parameters']:
+                            if 'isRequired' not in args:
                                 args['isRequired'] = True
 
                     # Raise up summary
