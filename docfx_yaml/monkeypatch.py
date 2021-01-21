@@ -304,7 +304,7 @@ def patch_docfields(app):
 
                                     _para_types.append(_s_type)
 
-                            _data = make_param(_id=_id, _type=_para_types, _description=_description, _required = True)
+                            _data = make_param(_id=_id, _type=_para_types, _description=_description)
                             data['variables'].append(_data)
 
                     ret_list = extract_exception_desc(field_object)

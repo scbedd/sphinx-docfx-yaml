@@ -57,8 +57,6 @@ REFFUNCTION = 'func'
 INITPY = '__init__.py'
 REF_PATTERN = ':(py:)?(func|class|meth|mod|ref):`~?[a-zA-Z_\.<> ]*?`'
 
-import pdb
-
 
 def build_init(app):
     """
@@ -636,8 +634,6 @@ def build_finished(app, exception):
 
                     if 'parameters' in obj['syntax'] and obj['type'] == 'method':	
                         for args in obj['syntax']['parameters']:
-                            if "client_secret" in obj['uid']:
-                                print(args)
                             if 'isRequired' not in args and 'defaultValue' not in args:
                                 args['isRequired'] = True
 
